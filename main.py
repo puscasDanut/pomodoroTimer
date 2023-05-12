@@ -1,5 +1,7 @@
 from tkinter import *
+import os
 
+main_dir = os.path.dirname(__file__)
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -24,13 +26,23 @@ window.config(padx=100, pady=50, bg=YELLOW)
 
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
-tomato_image = PhotoImage(file="tomato.png")
+tomato_image = PhotoImage(file=main_dir+"/tomato.png")
 canvas.create_image(100, 112, image=tomato_image)
 canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
-canvas.grid(column=1, row=0)
+canvas.grid(column=1, row=1)
 
+timer_label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"),
+                    highlightthickness=0, bg=YELLOW)
+timer_label.grid(column=1, row=0)
 
+start_button = Button(text="Start")
+start_button.grid(column=0, row=2)
 
+reset_button = Button(text="Reset")
+reset_button.grid(column=2, row=2)
+
+check_marks = Label(text="✔", bg=YELLOW, fg=GREEN, highlightthickness=0, font=(FONT_NAME, 10))
+check_marks.grid(column=1, row=3)
 
 
 window.mainloop()
